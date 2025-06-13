@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import * as obj_DDD from './services/ddd.js';
+import CardCidade from './components/card_cidade.js';
 
 export default function App() {
   obj_DDD.buscarDDDCallBack(11,retorno=>{
@@ -8,7 +9,14 @@ export default function App() {
   });
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <CardCidade
+        nome="Itu"
+        uf="SP"
+      />
+            <CardCidade
+        nome="Tietê"
+        uf="SP"
+      />
       <StatusBar style="auto" />
     </View>
   );
