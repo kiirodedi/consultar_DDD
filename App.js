@@ -6,10 +6,14 @@ import { FlatList } from 'react-native-gesture-handler';
 import React, { useState, useEffect } from 'react';
 
 export default function App() {
+  // Cria uma variável para guardar o DDD e atualizar esse valor //
   const [ddd, setDDD] = useState('');
+  // ria uma variável para guardar a sigla do estado e guardar esse valor //
   const [uf, setUf] = useState('');
+  // Cria uma variável para guardar a lista de cidades que veio da API e atualizar esse valor //
   const [cities, setCities] = useState([]);
 
+  // Cria uma variável para verifiar se o campo do input está em foco ou não //
   const [emFoco, setEmFoco] = useState(false);
 
   useEffect(() => {
