@@ -1,30 +1,36 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, View, TextInput } from 'react-native';
 import * as obj_DDD from './services/ddd.js';
 import CardCidade from './components/card_cidade.js';
 import { FlatList } from 'react-native-gesture-handler';
 import React, { useState, useEffect } from 'react';
 
 export default function App() {
-  // Cria uma variável para guardar o DDD e atualizar esse valor //
   const [ddd, setDDD] = useState('');
-  // ria uma variável para guardar a sigla do estado e guardar esse valor //
+   // Cria uma variável para guardar o DDD e atualizar esse valor //
   const [uf, setUf] = useState('');
-  // Cria uma variável para guardar a lista de cidades que veio da API e atualizar esse valor //
+  // Cria uma variável para guardar a sigla do estado e guardar esse valor //
   const [cities, setCities] = useState([]);
+  // Cria uma variável para guardar a lista de cidades que veio da API e atualizar esse valor //
 
-  // Cria uma variável para verifiar se o campo do input está em foco ou não //
   const [emFoco, setEmFoco] = useState(false);
+  // Cria uma variável para verifiar se o campo do input está em foco ou não //
 
   useEffect(() => {
+    // Esse useEffect serve para rodas um código sempre que um valor for alterado, nesse caso, o DDD //
     if(ddd.length === 2){
+      // Quando o valor digitado no input tiver 2 digitos, o código dentro do if será exeutado //
       obj_DDD.buscarDDDCallBack(ddd, dados => {
-        console.log(dados);
-        setUf(dados.state);
-        setCities(dados.cities);
+        // Chama a função "buscarDDDCallBack" passando o DDD digitado e uma função callBack que receberá od dados //
+
+        // Quando os dados da API chegar:
+        console.log(dados); // exibe os dados no console
+        setUf(dados.state); // atualiza a variável "uf" com os dados recebidos da API
+        setCities(dados.cities); // atualiza a variável "cities" com a lista de cidade recebidas da API
       });
     }
-  }, [ddd]);
+  },
+  [ddd]); // Significa que esse ódigo só será executado quando o valor de "ddd" for alterado.
   return (
     <View style={estilo.container}>
       <TextInput
@@ -37,14 +43,17 @@ export default function App() {
         onFocus={() => setEmFoco(true)}
         onBlur={() => setEmFoco(false)}
         />
-        <View style={estilo.view_lista}>
+        <View style={estilo.view_lista}> 
           <FlatList
+          // Um componente do React Native para exibir listas //
             data={cities}
+            // A lista de dados que será exibida no FlatList //
             renderItem={({ item, index }) => 
-              <CardCidade
-                nome={item}
-                uf={uf}
-                key={index}
+            // Uma função que diz como redenrizar cada item //
+              <CardCidade // para cada item é redenrizado um componente CardCidade
+                nome={item} // nome da cidade
+                uf={uf} // sigla do estado
+                key={index} // uma chave única para cada item
               />
             }
             estimatedItemSize={200}

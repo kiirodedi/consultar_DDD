@@ -1,11 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
 
 const CardCidade = ({nome, uf}) => {
+// Cria um componente que recebe dois parametros: nome e uf //
     return (
         <View style={estilo.card}>
             <Text style={estilo.cidade}>{nome}</Text>
+            // Exibe o nome da cidade //
             <Text> - </Text>
             <Text style={estilo.uf}>{uf}</Text>
+            // Exibe a sigla do estado //
         </View>
     )  
 };
