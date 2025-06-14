@@ -14,21 +14,23 @@ export default CardCidade;
 
 const estilo = StyleSheet.create({
     card: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#f0f0f0',
+        width: 'auto',
         padding: 10,
-        borderRadius: 5,
-        marginVertical: 5,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        backgroundColor: '#f1f1f1',
+        borderBottomStyle: 'solid',
+        borderBottomWidth: 0.3,
+        borderBottomColor: '#018080',
     },
     cidade: {
         fontSize: 18,
-        fontWeight: 'bold',
-        color: '#333',
+        color: '#000',
+        fontWeight: '600',
     },
     uf: {
-        fontSize: 16,
-        color: '#666',
+        fontSize: 18,
+        color: '#0206ff',
+        fontWeight: '700',
     },
 })
